@@ -9,6 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: UniversalRP
+  m_Script: {fileID: 11500000, guid: c708b1c0436e3da42935be2f62c75d4b, type: 3}
+  m_Name: KingGolden
   m_EditorClassIdentifier: 
+  name: Arcturus
+  description: Gobernando sobre todo aquello que se dice puro
+  artwork: {fileID: 21300000, guid: b8e28ebe6f3b47c4d802141347771757, type: 3}
+  range: 0
+  attack: 0
+  effect: 0

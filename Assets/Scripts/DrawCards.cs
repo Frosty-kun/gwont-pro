@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class DrawCards : MonoBehaviour
 {
     public GameObject Art;
-    public CardData cardData;
     public GameObject Card1;
     public GameObject Hand;
 

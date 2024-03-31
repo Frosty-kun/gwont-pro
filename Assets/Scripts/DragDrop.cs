@@ -31,5 +31,10 @@ public class DragDrop : MonoBehaviour
             transform.SetParent(Canvas.transform, true);
             transform.SetSiblingIndex(transform.parent.childCount-1);
         }
+        if(!isDragging)
+        {
+            
+        }
+
     }
 }
