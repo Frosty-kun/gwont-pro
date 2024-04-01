@@ -5,13 +5,14 @@ using UnityEngine;
 public class DragDrop : MonoBehaviour
 {
     public GameObject Canvas;
-    private bool isDragging=false;
-    
-    void Start()
-    {
-        Canvas = GameObject.Find("Main Canvas");
-    }
+    public GameObject Hand;
+    public GameObject Placement;
+    public GameObject Card;
 
+    private bool isDragging=false;
+    private bool detectedCollision=false;
+    private bool canMove=true;
+    
     public void StartDrag()
     {
         isDragging=true;
@@ -22,18 +23,49 @@ public class DragDrop : MonoBehaviour
         isDragging=false;
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Object entered collision");
+    }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        Debug.Log("Object is colliding");
+        if(collision.gameObject == Card || collision.gameObject == Placement)
+        {
+            detectedCollision=true;
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("Object exit collision");
+        detectedCollision=false;
+    }
+
+    bool CheckParent()
+    {
+        if(Card.transform.parent == Hand.transform)
+        {
+            Debug.Log("Card is a child of Hand");
+            return true;
+        }
+        else
+        {
+            Debug.Log("Card is not a child of Hand");
+            return false;
+        }
+    }
 
     void Update()
     {
-        if(isDragging)
+        if(isDragging&&canMove)
         {
             transform.position= new Vector2(Input.mousePosition.x,Input.mousePosition.y);
             transform.SetParent(Canvas.transform, true);
-            transform.SetSiblingIndex(transform.parent.childCount-1);
         }
-        if(!isDragging)
+        if(!isDragging&&!detectedCollision&&canMove&&!CheckParent())
         {
-            
+            Card.transform.SetParent(Hand.transform, true);
+            Debug.Log("Card returned to hand");
         }
 
     }
