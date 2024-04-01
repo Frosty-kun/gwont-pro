@@ -8,8 +8,32 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public GameObject CardVisualizer;
     public GameObject VisualizedCard;
     GameObject cardCopy;
-    
-    public bool checkMouse=false;
+
+    public bool descriptionToggle=false;
+
+    public void OnMouseDown()
+    {
+        descriptionToggle=!descriptionToggle;
+        Debug.Log("Description Toggle : "+descriptionToggle);
+        if(descriptionToggle)
+        {
+            CardStats descriptionStats = cardCopy.GetComponent<CardStats>();
+            descriptionStats.DescriptionText.transform.SetSiblingIndex(6);
+
+            CardStats imageFiltering = cardCopy.GetComponent<CardStats>();
+            Image image = imageFiltering.ArtImage.GetComponent<Image>();
+            image.color = new Color(0f,0f,0f,1f);
+        }
+        else
+        {
+            CardStats descriptionStats = cardCopy.GetComponent<CardStats>();
+            descriptionStats.DescriptionText.transform.SetSiblingIndex(0);
+
+            CardStats imageFiltering = cardCopy.GetComponent<CardStats>();
+            Image image = imageFiltering.ArtImage.GetComponent<Image>();
+            image.color = new Color(255f,255f,255f,1f);
+        }
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -22,34 +46,16 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if(cardCopy!=null)
         {
                 Debug.Log("Parent set to CardVisualizer");
-                // cardCopy.transform.localPosition = CardVisualizer.transform.localPosition;
                 cardCopy.transform.localPosition = new Vector2(0f,0f);
                 cardCopy.transform.localScale = new Vector3(4f, 4f, 4f);
                 cardCopy.transform.localRotation = VisualizedCard.transform.localRotation;
-                cardCopy.transform.localEulerAngles = new Vector3(0f,0f,270f);
-                // cardCopy.transform.localRotation = CardVisualizer.transform.localRotation;
+                cardCopy.transform.localEulerAngles = new Vector3(0f,0f,270f);      
         }
-        checkMouse=true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        // Do something here when the mouse exits the button
         Debug.Log("Mouse exited button");
-        Destroy(cardCopy, 0f);      
-        checkMouse=false;
+        Destroy(cardCopy, 0f);
     }
-
-    void Update()
-    {
-        if(checkMouse)
-        {
-            
-        }
-        else
-        {
-
-        }
-    }
-
 }
