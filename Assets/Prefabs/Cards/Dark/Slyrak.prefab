@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000012308, y: 35.63}
+  m_AnchoredPosition: {x: -0.39998, y: 36.526}
   m_SizeDelta: {x: 25.7257, y: 24.939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5845290772766489791
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ebca5f32a29a5d447b550547fdb47b23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a0502c52e53efbb43a5bc92d9ad8c534, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95052c6b62fb3de4695beaa99f842ac2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5e4370eb251f264b8410b85d2ac83e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 43d59b5c638b0664db55f3a4e4d130ef, type: 2}
-  m_Color: {r: 1, g: 0.9060749, b: 0, a: 1}
+  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -231,7 +231,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5
+  m_Text: 6
 --- !u!1 &2912019171041706297
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 43d59b5c638b0664db55f3a4e4d130ef, type: 2}
-  m_Color: {r: 1, g: 0.9504018, b: 0, a: 1}
+  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -311,7 +311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ejercito dorado
+  m_Text: Slyrak
 --- !u!1 &4228070085226249654
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,8 +391,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Defensores del reino de medacia. llevar armaduras de oro ya no parece tan
-    tonto.
+  m_Text: "Los dragones fueron los primeros en aprender a manipular el fuego y tambi\xE9n
+    los que ense\xF1aron a las dem\xE1s criaturas a hacerlo."
 --- !u!1 &4806213985197667458
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +419,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4806213985197667458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2.4316607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -428,7 +428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0048363, y: -1.0048902}
+  m_AnchoredPosition: {x: -1.0048218, y: -1.0048828}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4806213985197667453
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.83357984, b: 0.2216981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -496,7 +496,7 @@ RectTransform:
   m_GameObject: {fileID: 4806213986230192518}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2.4316607}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_LocalScale: {x: 0.68, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 401245780604466187}
@@ -504,7 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.4, y: -1.9}
+  m_AnchoredPosition: {x: -0.4, y: -2.08}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4806213986230192513
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4e18dcf1d888e7d428ca04622223ab18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3791d64b3990f0d468ef61e30419a428, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -558,10 +558,10 @@ GameObject:
   - component: {fileID: 4806213986410628358}
   - component: {fileID: 3360697346448833514}
   - component: {fileID: 3612568796907866811}
-  - component: {fileID: 1282776840410687156}
-  - component: {fileID: 6978881966159794216}
+  - component: {fileID: 6339346085764173132}
+  - component: {fileID: 5102820148273605024}
   m_Layer: 0
-  m_Name: GoldenArmy
+  m_Name: Slyrak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -606,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe6a117773c45f47992b559ee823fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 0}
+  Canvas: {fileID: 7902633714575406635, guid: 59179dec708b5424a9d2028e713d7894, type: 3}
   Hand: {fileID: 0}
   Placement: {fileID: 0}
   Card: {fileID: 4806213986410628356}
@@ -659,7 +659,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1282776840410687156}
+        - m_Target: {fileID: 6339346085764173132}
           m_TargetAssemblyTypeName: MouseHover, Assembly-CSharp
           m_MethodName: OnMouseDown
           m_Mode: 1
@@ -718,7 +718,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 61.700195, y: 76.61246}
   m_EdgeRadius: 0
---- !u!114 &1282776840410687156
+--- !u!114 &6339346085764173132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -733,7 +733,7 @@ MonoBehaviour:
   CardVisualizer: {fileID: 0}
   VisualizedCard: {fileID: 0}
   descriptionToggle: 0
---- !u!114 &6978881966159794216
+--- !u!114 &5102820148273605024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -749,9 +749,9 @@ MonoBehaviour:
   DescriptionText: {fileID: 4228070085226249654}
   ArtImage: {fileID: 4806213986230192518}
   DamageText: {fileID: 2875781556213876502}
-  RangeImage: {fileID: 0}
-  nameString: Ejercito dorado
-  descriptionString: Defensores del reino de medacia. llevar armaduras de oro ya
-    no parece tan tonto.
-  attackDamage: 5
-  attackRange: 0
+  RangeImage: {fileID: 2571387013893809818}
+  nameString: Slyrak
+  descriptionString: "Los dragones fueron los primeros en aprender a manipular el
+    fuego y tambi\xE9n los que ense\xF1aron a las dem\xE1s criaturas a hacerlo."
+  attackDamage: 6
+  attackRange: 2

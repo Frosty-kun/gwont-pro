@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95052c6b62fb3de4695beaa99f842ac2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d58f6849fa33c4b4293ecc5f615510c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 43d59b5c638b0664db55f3a4e4d130ef, type: 2}
-  m_Color: {r: 1, g: 0.9060749, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -231,7 +231,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5
+  m_Text: 4
 --- !u!1 &2912019171041706297
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 43d59b5c638b0664db55f3a4e4d130ef, type: 2}
-  m_Color: {r: 1, g: 0.9504018, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -311,7 +311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ejercito dorado
+  m_Text: milicia elfa
 --- !u!1 &4228070085226249654
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,8 +391,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Defensores del reino de medacia. llevar armaduras de oro ya no parece tan
-    tonto.
+  m_Text: Aliados temporales del reino de medacia. buscan recuperar las tierras que
+    perdieron al ser desplazados por el ejercito noxxramita.
 --- !u!1 &4806213985197667458
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4e18dcf1d888e7d428ca04622223ab18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 93e57068a5c2050459f7304bb0e5d05c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 1282776840410687156}
   - component: {fileID: 6978881966159794216}
   m_Layer: 0
-  m_Name: GoldenArmy
+  m_Name: ElvesBow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -749,9 +749,9 @@ MonoBehaviour:
   DescriptionText: {fileID: 4228070085226249654}
   ArtImage: {fileID: 4806213986230192518}
   DamageText: {fileID: 2875781556213876502}
-  RangeImage: {fileID: 0}
-  nameString: Ejercito dorado
-  descriptionString: Defensores del reino de medacia. llevar armaduras de oro ya
-    no parece tan tonto.
-  attackDamage: 5
-  attackRange: 0
+  RangeImage: {fileID: 2571387013893809818}
+  nameString: Milicia Elfa
+  descriptionString: Aliados temporales del reino de medacia. buscan recuperar las
+    tierras que perdieron al ser desplazados por el ejercito noxxramita.
+  attackDamage: 4
+  attackRange: 1

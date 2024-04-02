@@ -25,11 +25,11 @@ public class DragDrop : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Object entered collision");
+        Debug.Log(Card.name+" entered collision");
     }
     void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Object is colliding");
+        Debug.Log(Card.name+" is colliding");
         if(collision.gameObject == Card || collision.gameObject == Placement)
         {
             detectedCollision=true;
@@ -37,7 +37,7 @@ public class DragDrop : MonoBehaviour
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("Object exit collision");
+        Debug.Log(Card.name+" exit collision");
         detectedCollision=false;
     }
 
@@ -45,12 +45,12 @@ public class DragDrop : MonoBehaviour
     {
         if(Card.transform.parent == Hand.transform)
         {
-            Debug.Log("Card is a child of Hand");
+            Debug.Log(Card.name+" is a child of Hand");
             return true;
         }
         else
         {
-            Debug.Log("Card is not a child of Hand");
+            Debug.Log(Card.name+" is not a child of Hand");
             return false;
         }
     }
@@ -65,8 +65,14 @@ public class DragDrop : MonoBehaviour
         if(!isDragging&&!detectedCollision&&canMove&&!CheckParent())
         {
             Card.transform.SetParent(Hand.transform, true);
-            Debug.Log("Card returned to hand");
+            Debug.Log(Card.name+" returned to hand");
         }
+        if(!isDragging&&canMove&&detectedCollision)
+        {
+            Card.transform.SetParent(Placement.transform, true);
+            canMove=false;
+            Debug.Log(Card.name+" set to Placement");
 
+        }
     }
 }

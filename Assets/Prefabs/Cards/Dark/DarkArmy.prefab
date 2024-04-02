@@ -496,7 +496,7 @@ RectTransform:
   m_GameObject: {fileID: 4806213986230192518}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2.4316607}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 401245780604466187}
@@ -655,6 +655,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6339346085764173132}
+          m_TargetAssemblyTypeName: MouseHover, Assembly-CSharp
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!50 &3360697346448833514
 Rigidbody2D:
   serializedVersion: 4
@@ -663,19 +679,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4806213986410628356}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &3612568796907866811
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -686,7 +702,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.4515381, y: -6.1048737}
@@ -733,4 +749,9 @@ MonoBehaviour:
   DescriptionText: {fileID: 4228070085226249654}
   ArtImage: {fileID: 4806213986230192518}
   DamageText: {fileID: 2875781556213876502}
-  attackDamage: 5
+  RangeImage: {fileID: 2571387013893809818}
+  nameString: Ejercito Oscuro
+  descriptionString: Siervos fieles del imperio de Noxxramus. El acero negro que
+    visten contrasta con el pasto de las llanuras de las que ansian apoderarse.
+  attackDamage: 3
+  attackRange: 0

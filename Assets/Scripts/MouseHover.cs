@@ -15,24 +15,27 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         descriptionToggle=!descriptionToggle;
         Debug.Log("Description Toggle : "+descriptionToggle);
-        if(descriptionToggle)
-        {
-            CardStats descriptionStats = cardCopy.GetComponent<CardStats>();
-            descriptionStats.DescriptionText.transform.SetSiblingIndex(6);
+        if(cardCopy!=null)
+            {
+                if(descriptionToggle)
+                {
+                    CardStats descriptionStats = cardCopy.GetComponent<CardStats>();
+                    descriptionStats.DescriptionText.transform.SetSiblingIndex(6);
 
-            CardStats imageFiltering = cardCopy.GetComponent<CardStats>();
-            Image image = imageFiltering.ArtImage.GetComponent<Image>();
-            image.color = new Color(0f,0f,0f,1f);
-        }
-        else
-        {
-            CardStats descriptionStats = cardCopy.GetComponent<CardStats>();
-            descriptionStats.DescriptionText.transform.SetSiblingIndex(0);
+                    CardStats imageFiltering = cardCopy.GetComponent<CardStats>();
+                    Image image = imageFiltering.ArtImage.GetComponent<Image>();
+                    image.color = new Color(0f,0f,0f,1f);
+                }
+                else
+                {
+                    CardStats descriptionStats = cardCopy.GetComponent<CardStats>();
+                    descriptionStats.DescriptionText.transform.SetSiblingIndex(0);
 
-            CardStats imageFiltering = cardCopy.GetComponent<CardStats>();
-            Image image = imageFiltering.ArtImage.GetComponent<Image>();
-            image.color = new Color(255f,255f,255f,1f);
-        }
+                    CardStats imageFiltering = cardCopy.GetComponent<CardStats>();
+                    Image image = imageFiltering.ArtImage.GetComponent<Image>();
+                    image.color = new Color(255f,255f,255f,1f);
+                }
+            }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -56,6 +59,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("Mouse exited button");
+        descriptionToggle=false;
         Destroy(cardCopy, 0f);
     }
 }
