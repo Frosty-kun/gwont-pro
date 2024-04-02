@@ -5,12 +5,20 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject CardVisualizer;
-    public GameObject VisualizedCard;
+    private GameObject CardVisualizer;
+    private GameObject VisualizedCard;
+    private CardStats cardStats;
+    
+    private bool wichDisplay;
     GameObject cardCopy;
 
-    public bool descriptionToggle=false;
+    private bool descriptionToggle=false;
 
+    public void OnEnable()
+    {
+        cardStats=GetComponent<CardStats>();
+        wichDisplay = cardStats.player;
+    }
     public void OnMouseDown()
     {
         descriptionToggle=!descriptionToggle;
@@ -41,6 +49,18 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Mouse entered button");
+
+
+        if(wichDisplay)
+        {
+            CardVisualizer = GameObject.Find("CardVisualizer2");
+        }
+        else
+        {
+            CardVisualizer = GameObject.Find("CardVisualizer1");
+        }
+
+        VisualizedCard = gameObject;
 
         cardCopy = Instantiate(VisualizedCard, CardVisualizer.transform);
         cardCopy.GetComponent<DragDrop>().enabled = false;

@@ -4,18 +4,69 @@ using UnityEngine;
 
 public class DragDrop : MonoBehaviour
 {
-    public GameObject Canvas;
-    public GameObject Hand;
-    public GameObject Placement;
-    public GameObject Card;
+    private GameObject Canvas;
+    private GameObject Hand;
+    private GameObject Placement;
+    private GameObject Card;
+    private CardStats cardStats;
 
+    private bool wichPlayer=false;
+    private int wichRange;
     private bool isDragging=false;
     private bool detectedCollision=false;
     private bool canMove=true;
     
+
+    public void OnEnable()
+    {
+        cardStats=GetComponent<CardStats>();
+
+        wichPlayer = cardStats.player;
+        wichRange = cardStats.attackRange;
+
+        Canvas = GameObject.Find("Main Canvas");
+        Card=gameObject;
+
+        if(wichPlayer)
+        {
+            Hand = GameObject.Find("Hand2");
+            if(wichRange==0)
+            {
+                Placement = GameObject.Find("MeleeZone2");
+            }
+            else if(wichRange==1)
+            {
+                Placement = GameObject.Find("RangedZone2");
+            }
+            else if(wichRange==2)
+            {
+                Placement = GameObject.Find("ArtilleryZone2");
+            }
+        }
+        else
+        {
+            Hand = GameObject.Find("Hand1");
+            if(wichRange==0)
+            {
+                Placement = GameObject.Find("MeleeZone1");
+            }
+            else if(wichRange==1)
+            {
+                Placement = GameObject.Find("RangedZone1");
+            }
+            else if(wichRange==2)
+            {
+                Placement = GameObject.Find("ArtilleryZone1");
+            }
+        }
+
+        
+
+    }
     public void StartDrag()
     {
         isDragging=true;
+        
     }
 
     public void EndDrag()

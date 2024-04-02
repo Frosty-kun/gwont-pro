@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -36.2, y: -4.8}
-  m_SizeDelta: {x: 43.4383, y: 26.5329}
+  m_AnchoredPosition: {x: -35.52, y: -5.6977}
+  m_SizeDelta: {x: 23.0354, y: 19.0387}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5845290772766489791
 CanvasRenderer:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a0502c52e53efbb43a5bc92d9ad8c534, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebca5f32a29a5d447b550547fdb47b23, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -231,7 +231,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 7
 --- !u!1 &2912019171041706297
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ejercito de ebano
+  m_Text: gigante de oro
 --- !u!1 &4228070085226249654
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,8 +391,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Siervos fieles del imperio de Noxxramus. El acero negro que visten contrasta
-    con el pasto de las llanuras de las que ansian apoderarse.
+  m_Text: Antiquisimos fundadores, los gigantes fueron los primeros en edificar sobre
+    las tierras de medacia. este fosil viviente planea defender lo que cree que es
+    suyo.
 --- !u!1 &4806213985197667458
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8bfc8fcc81da4d9469bbdfe83ac5c6fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4680a4e8f9a2144fac0f382594f2b01, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -535,7 +536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a9b3a3ee850bed74a9d190222d4b3d17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2496b30f69189e64e996982023184432, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -558,10 +559,10 @@ GameObject:
   - component: {fileID: 4806213986410628358}
   - component: {fileID: 3360697346448833514}
   - component: {fileID: 3612568796907866811}
-  - component: {fileID: 6339346085764173132}
-  - component: {fileID: 5102820148273605024}
+  - component: {fileID: 1282776840410687156}
+  - component: {fileID: 6978881966159794216}
   m_Layer: 0
-  m_Name: DarkArmy
+  m_Name: GiantGolden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -655,7 +656,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6339346085764173132}
+        - m_Target: {fileID: 1282776840410687156}
           m_TargetAssemblyTypeName: MouseHover, Assembly-CSharp
           m_MethodName: OnMouseDown
           m_Mode: 1
@@ -714,7 +715,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 92.36001, y: 119.63931}
   m_EdgeRadius: 0
---- !u!114 &6339346085764173132
+--- !u!114 &1282776840410687156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -726,8 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebc38e67a857a24cb1003fc04e8f397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  descriptionToggle: 0
---- !u!114 &5102820148273605024
+--- !u!114 &6978881966159794216
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -744,9 +744,10 @@ MonoBehaviour:
   ArtImage: {fileID: 4806213986230192518}
   DamageText: {fileID: 2875781556213876502}
   RangeImage: {fileID: 2571387013893809818}
-  player: 1
-  nameString: Ejercito de ebano
-  descriptionString: Siervos fieles del imperio de Noxxramus. El acero negro que
-    visten contrasta con el pasto de las llanuras de las que ansian apoderarse.
-  attackDamage: 3
-  attackRange: 0
+  player: 0
+  nameString: Gigante de oro
+  descriptionString: antiquisimos fundadores, los gigantes fueron los primeros en
+    edificar sobre las tierras de medacia, este fosil viviente piensa defender lo
+    que cree que es suyo.
+  attackDamage: 7
+  attackRange: 2

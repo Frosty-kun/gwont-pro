@@ -13,6 +13,7 @@ public class CardStats : MonoBehaviour
     public GameObject DamageText;
     public GameObject RangeImage;
 
+    public bool player=false;
     public string nameString;
     public string descriptionString;
     public int attackDamage;
