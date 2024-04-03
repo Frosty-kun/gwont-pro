@@ -22,7 +22,7 @@ public class DragDrop : MonoBehaviour
 
     public void OnEnable()
     {
-        cardStats=GetComponent<CardStats>();
+        cardStats = GetComponent<CardStats>();
 
         wichPlayer = cardStats.player;
         wichRange = cardStats.attackRange;
@@ -30,6 +30,8 @@ public class DragDrop : MonoBehaviour
         Canvas = GameObject.Find("Main Canvas");
         
         Card=gameObject;
+
+        TurnText = GameObject.Find("TurnText");
 
         turnHandler = TurnText.GetComponent<TurnHandler>();
 
@@ -116,6 +118,8 @@ public class DragDrop : MonoBehaviour
 
     void Update()
     {
+        turnHandler.FieldDamage();
+
         if(isDragging&&canMove&&itsTurn)
         {
             transform.position= new Vector2(Input.mousePosition.x,Input.mousePosition.y);

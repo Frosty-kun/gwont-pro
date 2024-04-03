@@ -18,6 +18,7 @@ public class CardStats : MonoBehaviour
     public string descriptionString;
     public int attackDamage;
     public int attackRange;
+    public bool  isGolden;
 
 
     private void OnEnable()

@@ -11,7 +11,10 @@ public class TurnHandler : MonoBehaviour
     private CardStats cardStats;
     private DragDrop dragDrop;
     private GameObject TurnText;
-    public CardStats[] cardStatsList;
+    private GameObject Player1Damage;
+    private GameObject Player2Damage;
+    public CardStats[] cardStatsList1;
+    public CardStats[] cardStatsList2;
     public DragDrop[] dragDropList;
 
     GameObject areaReference;
@@ -22,15 +25,17 @@ public class TurnHandler : MonoBehaviour
         dragDrop = GetComponent<DragDrop>();
         TurnText = GameObject.Find("TurnText");
 
+        Player1Damage = GameObject.Find("Player1Damage");
+        Player2Damage = GameObject.Find("Player2Damage");
+
         TurnText.GetComponent<Text>().text = "Turno:"+turnCounter;
     }
 
     public void DisableInteraction()
     {
-        areaReference = GameObject.Find("Main Canvas");
+        areaReference = GameObject.Find("CardsArea");
         if(!playerTurn)
         {
-            cardStatsList = areaReference.GetComponentsInChildren<CardStats>();
             dragDropList = areaReference.GetComponentsInChildren<DragDrop>();
 
             foreach(DragDrop dragDrop in dragDropList)
@@ -40,7 +45,6 @@ public class TurnHandler : MonoBehaviour
         }
         else
         {
-            cardStatsList = areaReference.GetComponentsInChildren<CardStats>();
             dragDropList = areaReference.GetComponentsInChildren<DragDrop>();
 
             foreach(DragDrop dragDrop in dragDropList)
@@ -58,7 +62,28 @@ public class TurnHandler : MonoBehaviour
 
     public void FieldDamage()
     {
-        areaReference = GameObject.Find("Player1Area");
+        int damageCounter = 0;
+
+        areaReference = GameObject.Find("SetZone1");
+        cardStatsList1 = areaReference.GetComponentsInChildren<CardStats>();
+        foreach(CardStats cardStats in cardStatsList1)
+        {
+            damageCounter+=cardStats.attackDamage;
+        }
+
+        Player1Damage.GetComponent<Text>().text = "Ataque:"+damageCounter;
+
+        damageCounter = 0;
+
+        areaReference = GameObject.Find("SetZone2");
+        cardStatsList2 = areaReference.GetComponentsInChildren<CardStats>();
+        foreach(CardStats cardStats in cardStatsList2)
+        {
+            damageCounter+=cardStats.attackDamage;
+        }
+
+        Player2Damage.GetComponent<Text>().text = "Ataque:"+damageCounter;
+
     }
 
     public void OnClick()
