@@ -5,16 +5,19 @@ using UnityEngine;
 public class DragDrop : MonoBehaviour
 {
     private GameObject Canvas;
+    private GameObject TurnText;
     private GameObject Hand;
     private GameObject Placement;
     private GameObject Card;
     private CardStats cardStats;
+    private TurnHandler turnHandler;
 
     private bool wichPlayer=false;
     private int wichRange;
     private bool isDragging=false;
     private bool detectedCollision=false;
     private bool canMove=true;
+    public bool itsTurn;
     
 
     public void OnEnable()
@@ -25,7 +28,12 @@ public class DragDrop : MonoBehaviour
         wichRange = cardStats.attackRange;
 
         Canvas = GameObject.Find("Main Canvas");
+        
         Card=gameObject;
+
+        turnHandler = TurnText.GetComponent<TurnHandler>();
+
+        itsTurn=!cardStats.player;
 
         if(wichPlayer)
         {
@@ -76,11 +84,11 @@ public class DragDrop : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(Card.name+" entered collision");
+        // Debug.Log(Card.name+" entered collision");
     }
     void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log(Card.name+" is colliding");
+        // Debug.Log(Card.name+" is colliding");
         if(collision.gameObject == Card || collision.gameObject == Placement)
         {
             detectedCollision=true;
@@ -88,7 +96,7 @@ public class DragDrop : MonoBehaviour
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log(Card.name+" exit collision");
+        // Debug.Log(Card.name+" exit collision");
         detectedCollision=false;
     }
 
@@ -96,19 +104,19 @@ public class DragDrop : MonoBehaviour
     {
         if(Card.transform.parent == Hand.transform)
         {
-            Debug.Log(Card.name+" is a child of Hand");
+            //Debug.Log(Card.name+" is a child of Hand");
             return true;
         }
         else
         {
-            Debug.Log(Card.name+" is not a child of Hand");
+            //Debug.Log(Card.name+" is not a child of Hand");
             return false;
         }
     }
 
     void Update()
     {
-        if(isDragging&&canMove)
+        if(isDragging&&canMove&&itsTurn)
         {
             transform.position= new Vector2(Input.mousePosition.x,Input.mousePosition.y);
             transform.SetParent(Canvas.transform, true);
@@ -116,14 +124,17 @@ public class DragDrop : MonoBehaviour
         if(!isDragging&&!detectedCollision&&canMove&&!CheckParent())
         {
             Card.transform.SetParent(Hand.transform, true);
-            Debug.Log(Card.name+" returned to hand");
+            // Debug.Log(Card.name+" returned to hand");
         }
         if(!isDragging&&canMove&&detectedCollision)
         {
             Card.transform.SetParent(Placement.transform, true);
             canMove=false;
-            Debug.Log(Card.name+" set to Placement");
 
+            turnHandler.DisableInteraction();
+            turnHandler.ChangeTurn();
+
+            // Debug.Log(Card.name+" set to Placement");
         }
     }
 }

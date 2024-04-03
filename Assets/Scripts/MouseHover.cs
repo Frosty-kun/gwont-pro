@@ -9,7 +9,6 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private GameObject VisualizedCard;
     private CardStats cardStats;
     
-    private bool wichDisplay;
     GameObject cardCopy;
 
     private bool descriptionToggle=false;
@@ -17,7 +16,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnEnable()
     {
         cardStats=GetComponent<CardStats>();
-        wichDisplay = cardStats.player;
+        
     }
     public void OnMouseDown()
     {
@@ -51,14 +50,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         Debug.Log("Mouse entered button");
 
 
-        if(wichDisplay)
-        {
-            CardVisualizer = GameObject.Find("CardVisualizer2");
-        }
-        else
-        {
-            CardVisualizer = GameObject.Find("CardVisualizer1");
-        }
+        CardVisualizer = GameObject.Find("CardVisualizer");
 
         VisualizedCard = gameObject;
 
