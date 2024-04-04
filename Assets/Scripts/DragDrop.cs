@@ -16,8 +16,9 @@ public class DragDrop : MonoBehaviour
     private int wichRange;
     private bool isDragging=false;
     private bool detectedCollision=false;
-    private bool canMove=true;
+    private bool inHand=true;
     public bool itsTurn;
+    public bool hasPassed;
     
 
     public void OnEnable()
@@ -69,10 +70,8 @@ public class DragDrop : MonoBehaviour
                 Placement = GameObject.Find("ArtilleryZone1");
             }
         }
-
-        
-
     }
+
     public void StartDrag()
     {
         isDragging=true;
@@ -120,25 +119,48 @@ public class DragDrop : MonoBehaviour
     {
         turnHandler.FieldDamage();
 
-        if(isDragging&&canMove&&itsTurn)
+        if(isDragging&&inHand&&itsTurn&&!hasPassed)
         {
             transform.position= new Vector2(Input.mousePosition.x,Input.mousePosition.y);
             transform.SetParent(Canvas.transform, true);
         }
-        if(!isDragging&&!detectedCollision&&canMove&&!CheckParent())
+        if(!isDragging&&!detectedCollision&&inHand&&!CheckParent())
         {
             Card.transform.SetParent(Hand.transform, true);
             // Debug.Log(Card.name+" returned to hand");
         }
-        if(!isDragging&&canMove&&detectedCollision)
+        if(!isDragging&&inHand&&detectedCollision)
         {
             Card.transform.SetParent(Placement.transform, true);
-            canMove=false;
+            inHand=false;
 
-            turnHandler.DisableInteraction();
-            turnHandler.ChangeTurn();
+            turnHandler.HandManager();
 
-            // Debug.Log(Card.name+" set to Placement");
+            hasPassed = turnHandler.player1Passed;
+            hasPassed = turnHandler.player2Passed;
+
+            if(turnHandler.player1Turn && turnHandler.HandList1.Length == 0)
+            {
+                itsTurn = turnHandler.player1Turn;
+                
+                turnHandler.Pass();
+            }
+            else if(turnHandler.player2Turn && turnHandler.HandList2.Length == 0)
+            {
+                itsTurn = turnHandler.player2Turn;
+                
+                turnHandler.Pass();
+            }
+            else if(turnHandler.player1Turn && !turnHandler.player2Passed)
+            {
+                turnHandler.ChangeCardTurn();
+                turnHandler.ChangeTurn();
+            }
+            else if(turnHandler.player2Turn && !turnHandler.player1Passed)
+            {
+                turnHandler.ChangeCardTurn();
+                turnHandler.ChangeTurn();
+            }
         }
     }
 }
