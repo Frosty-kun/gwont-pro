@@ -1227,6 +1227,7 @@ GameObject:
   - component: {fileID: 1280147070}
   - component: {fileID: 1280147069}
   - component: {fileID: 1280147068}
+  - component: {fileID: 1280147072}
   m_Layer: 5
   m_Name: Main Canvas
   m_TagString: Untagged
@@ -1324,6 +1325,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1280147072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280147067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1163f938334474383dbe10248439b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldList1: []
+  FieldList2: []
+  HandList1: []
+  HandList2: []
 --- !u!1 &1328218116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 283939708683464993, guid: 1f0d0a91f93e8d044ac9a7414052da24, type: 3}
@@ -2022,6 +2039,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1280147071}
     m_Modifications:
+    - target: {fileID: 4879462783516561800, guid: ad1f725555fd2744cbc01f85ec4a8135, type: 3}
+      propertyPath: m_Text
+      value: Turno:0
+      objectReference: {fileID: 0}
     - target: {fileID: 4879462783516561802, guid: ad1f725555fd2744cbc01f85ec4a8135, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2268,7 +2289,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ataque:'
+  m_Text: ataque:0
 --- !u!222 &5692681823184237653
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2368,7 +2389,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ataque:'
+  m_Text: ataque:0
 --- !u!222 &6083640921017966271
 CanvasRenderer:
   m_ObjectHideFlags: 0

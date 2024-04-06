@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class DragDrop : MonoBehaviour
 {
-    private GameObject Canvas;
+    public GameObject Canvas;
     private GameObject TurnText;
     private GameObject Hand;
     private GameObject Placement;
     private GameObject Card;
     private CardStats cardStats;
     private TurnHandler turnHandler;
+    private BoardManager boardManager;
 
     private bool wichPlayer=false;
     private int wichRange;
@@ -35,6 +36,7 @@ public class DragDrop : MonoBehaviour
         TurnText = GameObject.Find("TurnText");
 
         turnHandler = TurnText.GetComponent<TurnHandler>();
+        boardManager = Canvas.GetComponent<BoardManager>();
 
         itsTurn=!cardStats.player;
 
@@ -117,8 +119,6 @@ public class DragDrop : MonoBehaviour
 
     void Update()
     {
-        turnHandler.FieldDamage();
-
         if(isDragging&&inHand&&itsTurn&&!hasPassed)
         {
             transform.position= new Vector2(Input.mousePosition.x,Input.mousePosition.y);
@@ -134,18 +134,20 @@ public class DragDrop : MonoBehaviour
             Card.transform.SetParent(Placement.transform, true);
             inHand=false;
 
-            turnHandler.HandManager();
+            boardManager.HandManager();
 
             hasPassed = turnHandler.player1Passed;
             hasPassed = turnHandler.player2Passed;
+            boardManager.FieldDamage(false);
+            boardManager.FieldDamage(true);
 
-            if(turnHandler.player1Turn && turnHandler.HandList1.Length == 0)
+            if(turnHandler.player1Turn && boardManager.HandList1.Length == 0)
             {
                 itsTurn = turnHandler.player1Turn;
                 
                 turnHandler.Pass();
             }
-            else if(turnHandler.player2Turn && turnHandler.HandList2.Length == 0)
+            else if(turnHandler.player2Turn && boardManager.HandList2.Length == 0)
             {
                 itsTurn = turnHandler.player2Turn;
                 
@@ -153,12 +155,12 @@ public class DragDrop : MonoBehaviour
             }
             else if(turnHandler.player1Turn && !turnHandler.player2Passed)
             {
-                turnHandler.ChangeCardTurn();
+                turnHandler.ChangeDragTurn();
                 turnHandler.ChangeTurn();
             }
             else if(turnHandler.player2Turn && !turnHandler.player1Passed)
             {
-                turnHandler.ChangeCardTurn();
+                turnHandler.ChangeDragTurn();
                 turnHandler.ChangeTurn();
             }
         }
