@@ -9,17 +9,24 @@ public class DragDrop : MonoBehaviour
     private GameObject Hand;
     private GameObject Placement;
     private GameObject Card;
+    private GameObject draggedCard;
     private CardStats cardStats;
+    private CardStats draggedCardStats;
+    private CardStats targetCardStats;
     private TurnHandler turnHandler;
     private BoardManager boardManager;
+    private GameObject targetCard;
 
     private bool wichPlayer=false;
     private int wichRange;
     private bool isDragging=false;
+    private bool dummyCheck=false;
     private bool detectedCollision=false;
-    private bool inHand=true;
+    private bool dummyCollision=false;
+    public bool inHand=true;
     public bool itsTurn;
     public bool hasPassed;
+    
     
 
     public void OnEnable()
@@ -53,7 +60,7 @@ public class DragDrop : MonoBehaviour
             }
             else if(wichRange==2)
             {
-                Placement = GameObject.Find("ArtilleryZone2");
+                Placement = GameObject.Find("SiegeZone2");
             }
         }
         else
@@ -69,19 +76,22 @@ public class DragDrop : MonoBehaviour
             }
             else if(wichRange==2)
             {
-                Placement = GameObject.Find("ArtilleryZone1");
+                Placement = GameObject.Find("SiegeZone1");
             }
         }
     }
 
     public void StartDrag()
     {
+        draggedCard = gameObject;
+        draggedCardStats = draggedCard.GetComponent<CardStats>();
         isDragging=true;
-        
     }
 
     public void EndDrag()
     {
+        draggedCard=null;
+        draggedCardStats = null;
         isDragging=false;
     }
 
@@ -92,15 +102,39 @@ public class DragDrop : MonoBehaviour
     void OnCollisionStay2D(Collision2D collision)
     {
         // Debug.Log(Card.name+" is colliding");
-        if(collision.gameObject == Card || collision.gameObject == Placement)
+        if(!cardStats.isDummy)
         {
-            detectedCollision=true;
+            if(collision.gameObject == Card || collision.gameObject == Placement)
+            {
+                detectedCollision=true;
+            }
+        }
+        else if(draggedCardStats!=null&&draggedCardStats.isDummy)
+        {
+            Debug.Log("Dummy Test");
+            
+            if(collision.gameObject!=null&&collision.gameObject.GetComponent<CardStats>()!=null)
+            {
+                targetCardStats = collision.gameObject.GetComponent<CardStats>();
+                targetCard = collision.gameObject;
+                DragDrop targetCardDragDrop = collision.gameObject.GetComponent<DragDrop>();
+
+                if(!targetCardDragDrop.inHand)
+                {
+                    string targetCardPlacementName =  targetCard.transform.parent.name;
+                    Placement = GameObject.Find(targetCardPlacementName);
+                    dummyCollision=true;   
+                    dummyCheck=true;
+                }
+            }
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
         // Debug.Log(Card.name+" exit collision");
         detectedCollision=false;
+        dummyCollision=false;
+        dummyCheck=false;
     }
 
     bool CheckParent()
@@ -117,6 +151,44 @@ public class DragDrop : MonoBehaviour
         }
     }
 
+    void SetCardToZone()
+    {
+        //Debug.Log("Setting card to zone");
+        Card.transform.SetParent(Placement.transform, true);
+        inHand=false;
+
+        boardManager.HandManager();
+
+        hasPassed = turnHandler.player1Passed;
+        hasPassed = turnHandler.player2Passed;
+        boardManager.FieldDamage();
+        // boardManager.FieldDamage(false);
+        // boardManager.FieldDamage(true);
+
+        if(turnHandler.player1Turn && boardManager.HandList1.Length == 0)
+        {
+            itsTurn = turnHandler.player1Turn;
+            
+            turnHandler.Pass();
+        }
+        else if(turnHandler.player2Turn && boardManager.HandList2.Length == 0)
+        {
+            itsTurn = turnHandler.player2Turn;
+                
+            turnHandler.Pass();
+        }
+        else if(turnHandler.player1Turn && !turnHandler.player2Passed)
+        {
+            turnHandler.ChangeDragTurn();
+            turnHandler.ChangeTurn();
+        }
+        else if(turnHandler.player2Turn && !turnHandler.player1Passed)
+        {
+            turnHandler.ChangeDragTurn();
+            turnHandler.ChangeTurn();
+        }
+    }
+
     void Update()
     {
         if(isDragging&&inHand&&itsTurn&&!hasPassed)
@@ -127,42 +199,29 @@ public class DragDrop : MonoBehaviour
         if(!isDragging&&!detectedCollision&&inHand&&!CheckParent())
         {
             Card.transform.SetParent(Hand.transform, true);
-            // Debug.Log(Card.name+" returned to hand");
+            //Debug.Log(Card.name+" returned to hand");
         }
-        if(!isDragging&&inHand&&detectedCollision)
+        if(!isDragging&&inHand&&detectedCollision&&dummyCheck==false)
         {
-            Card.transform.SetParent(Placement.transform, true);
-            inHand=false;
+            SetCardToZone();
+        }
+        if(!isDragging&&inHand&&dummyCollision&&dummyCheck==true&&!targetCardStats.isGolden)
+        {
+            if(targetCardStats!=null)
+            {
+                if(targetCardStats.player==false)
+                {
+                    Hand = GameObject.Find("Hand1");
+                    targetCard.transform.SetParent(Hand.transform);
+                }
+                else
+                {
+                    Hand = GameObject.Find("Hand2");
+                    targetCard.transform.SetParent(Hand.transform);
 
-            boardManager.HandManager();
-
-            hasPassed = turnHandler.player1Passed;
-            hasPassed = turnHandler.player2Passed;
-            boardManager.FieldDamage(false);
-            boardManager.FieldDamage(true);
-
-            if(turnHandler.player1Turn && boardManager.HandList1.Length == 0)
-            {
-                itsTurn = turnHandler.player1Turn;
-                
-                turnHandler.Pass();
+                }
             }
-            else if(turnHandler.player2Turn && boardManager.HandList2.Length == 0)
-            {
-                itsTurn = turnHandler.player2Turn;
-                
-                turnHandler.Pass();
-            }
-            else if(turnHandler.player1Turn && !turnHandler.player2Passed)
-            {
-                turnHandler.ChangeDragTurn();
-                turnHandler.ChangeTurn();
-            }
-            else if(turnHandler.player2Turn && !turnHandler.player1Passed)
-            {
-                turnHandler.ChangeDragTurn();
-                turnHandler.ChangeTurn();
-            }
+            SetCardToZone();
         }
     }
 }

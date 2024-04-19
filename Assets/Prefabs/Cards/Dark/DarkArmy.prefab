@@ -606,6 +606,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe6a117773c45f47992b559ee823fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
+  itsTurn: 0
+  hasPassed: 0
 --- !u!114 &4806213986410628358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebc38e67a857a24cb1003fc04e8f397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  descriptionToggle: 0
 --- !u!114 &5102820148273605024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,3 +752,4 @@ MonoBehaviour:
     visten contrasta con el pasto de las llanuras de las que ansian apoderarse.
   attackDamage: 3
   attackRange: 0
+  isGolden: 0

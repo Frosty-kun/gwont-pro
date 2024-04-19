@@ -16,6 +16,7 @@ public class TurnHandler : MonoBehaviour
     private int player2Score=0;
     private string playerTurnName="1";
 
+    private DeckList deckList;
     private BoardManager boardManager;
     private DragDrop dragDrop;
     private GameObject TurnText;
@@ -27,6 +28,7 @@ public class TurnHandler : MonoBehaviour
 
     void OnEnable()
     {
+        deckList = GameObject.Find("Deck1").GetComponent<DeckList>();
         boardManager = GameObject.Find("Main Canvas").GetComponent<BoardManager>();
         dragDrop = GetComponent<DragDrop>();
         TurnText = GameObject.Find("TurnText");
@@ -115,8 +117,8 @@ public class TurnHandler : MonoBehaviour
 
     public void ResolveRound()
     {
-        int resolveDamage1 = boardManager.FieldDamage(false);
-        int resolveDamage2 = boardManager.FieldDamage(true);
+        int resolveDamage1 = boardManager.player1damage;
+        int resolveDamage2 = boardManager.player2damage;
 
         Debug.Log(resolveDamage1+" "+resolveDamage2);
 
@@ -136,6 +138,10 @@ public class TurnHandler : MonoBehaviour
             player2Score++;
             Debug.Log("ROUND TIED");
         }
+
+        deckList.KillCards();
+
+        boardManager.FieldDamage();
 
         if(player1Score == 2 && player1Score != player2Score)
         {

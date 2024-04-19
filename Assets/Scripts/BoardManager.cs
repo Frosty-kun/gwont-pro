@@ -10,45 +10,52 @@ public class BoardManager : MonoBehaviour
     private CardStats cardStats;
     public CardStats[] FieldList1;
     public CardStats[] FieldList2;
+    public CardStats[][] Fields;
     public CardStats[] HandList1;
     public CardStats[] HandList2;
-    private GameObject Player1Damage;
-    private GameObject Player2Damage;
-    GameObject areaReference;
+    private GameObject[] PlayerDamages;
+    // private GameObject Player1Damage;
+    // private GameObject Player2Damage;
+    private GameObject areaReference;
+
+    public int player1damage=0;
+    public int player2damage=0;
 
     private void OnEnable()
     {
         cardStats = GetComponent<CardStats>();
 
-        Player1Damage = GameObject.Find("Player1Damage");
-        Player2Damage = GameObject.Find("Player2Damage");
+        Fields = new CardStats[3][];
+
+        PlayerDamages = new GameObject[3];
+
+        Fields[1] = FieldList1;
+        Fields[2] = FieldList2;
+
+        PlayerDamages[1] = GameObject.Find("Player1Damage");
+        PlayerDamages[2] = GameObject.Find("Player2Damage");
     }
 
-    public int FieldDamage(bool player)
+    public void FieldDamage()
     {
-        damageCounter=0;
-        if(!player)
+        for(int i=1; i<=2; i++)
         {
-            areaReference = GameObject.Find("SetZone1");
-            FieldList1 = areaReference.GetComponentsInChildren<CardStats>();
-            foreach(CardStats cardStats in FieldList1)
+            damageCounter=0;
+            areaReference = GameObject.Find("SetZone"+i);
+            Fields[i] = areaReference.GetComponentsInChildren<CardStats>();          
+            foreach(CardStats cardStats in Fields[i])
             {
                 damageCounter+=cardStats.attackDamage;
-            }
-            
-            Player1Damage.GetComponent<Text>().text = "Ataque:"+damageCounter;
-            return damageCounter;
-        }
-        else
-        {
-            areaReference = GameObject.Find("SetZone2");
-            FieldList2 = areaReference.GetComponentsInChildren<CardStats>();
-            foreach(CardStats cardStats in FieldList2)
+            }   
+            PlayerDamages[i].GetComponent<Text>().text = "Ataque:"+damageCounter;
+            if(i==1)
             {
-                damageCounter+=cardStats.attackDamage;
+                player1damage=damageCounter;
             }
-            Player2Damage.GetComponent<Text>().text = "Ataque:"+damageCounter;
-            return damageCounter;
+            else
+            {
+                player2damage=damageCounter;
+            }
         }
     }
 

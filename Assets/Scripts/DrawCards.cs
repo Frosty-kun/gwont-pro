@@ -11,11 +11,14 @@ public class DrawCards : MonoBehaviour
 
     public void OnClick()
     {
-        for(int i = 0; i < 10; i++)
-        {
-            GameObject card = Instantiate(DarkArmy, new Vector2(0, 0), Quaternion.identity);
-            card.transform.SetParent(Hand.transform, false);
-            card.name = $"{card.name}{i}";
-        }
+        // for(int i = 0; i < 10; i++)
+        // {
+        //     GameObject card = Instantiate(DarkArmy, new Vector2(0, 0), Quaternion.identity);
+        //     card.transform.SetParent(Hand.transform, false);
+        //     card.name = $"{card.name}{i}";
+        // }
+
+        // GameObject card = Instantiate(CardsList)
+
     }
 }

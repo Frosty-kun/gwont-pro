@@ -19,6 +19,7 @@ public class CardStats : MonoBehaviour
     public int attackDamage;
     public int attackRange;
     public bool  isGolden;
+    public bool isDummy;
 
 
     private void OnEnable()
@@ -41,8 +42,9 @@ public class CardStats : MonoBehaviour
         {
             RangeImage.GetComponent<Image>().sprite=Resources.Load<Sprite>("Wooden Staff");
         }
-
-
-
+        else if(attackRange==4)
+        {
+            isDummy=true;
+        }
     }
 }

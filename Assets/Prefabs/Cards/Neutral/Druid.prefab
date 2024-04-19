@@ -607,9 +607,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 7902633714575406635, guid: 59179dec708b5424a9d2028e713d7894, type: 3}
-  Hand: {fileID: 0}
-  Placement: {fileID: 0}
-  Card: {fileID: 4806213986410628356}
+  itsTurn: 0
+  hasPassed: 0
 --- !u!114 &4806213986410628358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,9 +729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebc38e67a857a24cb1003fc04e8f397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardVisualizer: {fileID: 0}
-  VisualizedCard: {fileID: 0}
-  descriptionToggle: 0
 --- !u!114 &5102820148273605024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,9 +746,11 @@ MonoBehaviour:
   ArtImage: {fileID: 4806213986230192518}
   DamageText: {fileID: 2875781556213876502}
   RangeImage: {fileID: 2571387013893809818}
+  player: 0
   nameString: Archidruida
   descriptionString: "Siendo los guardianes del mundo, los druidas se dedican a preservar
     el equilibrio natural y tienen el poder para hacerlo.ender a manipular el fuego
     y tambi\xE9n los que ense\xF1aron a las dem\xE1s criaturas a hacerlo."
   attackDamage: 4
   attackRange: 2
+  isGolden: 1

@@ -21,7 +21,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnMouseDown()
     {
         descriptionToggle=!descriptionToggle;
-        Debug.Log("Description Toggle : "+descriptionToggle);
+        //Debug.Log("Description Toggle : "+descriptionToggle);
         if(cardCopy!=null)
             {
                 if(descriptionToggle)
@@ -47,7 +47,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Mouse entered button");
+        //Debug.Log("Mouse entered button");
 
 
         CardVisualizer = GameObject.Find("CardVisualizer");
@@ -60,17 +60,16 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         if(cardCopy!=null)
         {
-                Debug.Log("Parent set to CardVisualizer");
+                //Debug.Log("Parent set to CardVisualizer");
                 cardCopy.transform.localPosition = new Vector2(0f,0f);
                 cardCopy.transform.localScale = new Vector3(4f, 4f, 4f);
                 cardCopy.transform.localRotation = VisualizedCard.transform.localRotation;
-                cardCopy.transform.localEulerAngles = new Vector3(0f,0f,270f);      
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse exited button");
+        //Debug.Log("Mouse exited button");
         descriptionToggle=false;
         Destroy(cardCopy, 0f);
     }
