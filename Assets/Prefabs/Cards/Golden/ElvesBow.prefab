@@ -607,9 +607,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
-  Hand: {fileID: 0}
-  Placement: {fileID: 0}
-  Card: {fileID: 4806213986410628356}
+  inHand: 1
+  itsTurn: 0
+  hasPassed: 0
 --- !u!114 &4806213986410628358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,9 +730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebc38e67a857a24cb1003fc04e8f397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardVisualizer: {fileID: 0}
-  VisualizedCard: {fileID: 0}
-  descriptionToggle: 0
 --- !u!114 &6978881966159794216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,8 +747,14 @@ MonoBehaviour:
   ArtImage: {fileID: 4806213986230192518}
   DamageText: {fileID: 2875781556213876502}
   RangeImage: {fileID: 2571387013893809818}
+  player: 0
   nameString: Milicia Elfa
   descriptionString: Aliados temporales del reino de medacia. buscan recuperar las
     tierras que perdieron al ser desplazados por el ejercito noxxramita.
+  originalAttackDamage: 4
   attackDamage: 4
+  tempDamage: 4
   attackRange: 1
+  isGolden: 0
+  isDummy: 0
+  isGiant: 0

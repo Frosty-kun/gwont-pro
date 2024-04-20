@@ -1,74 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DeckList : MonoBehaviour
 {
+    //Crea listas para almacenar las cartas de cada deck
+
     public List <GameObject> cardsList;
     public GameObject Hand;
-    public GameObject DeleteZone;
-    public GameObject Cemetery;
-    public GameObject childCard;
+    private GameObject tempCard;
     public int firstDraw;
-    public GameObject[] childrenCards;
+    public bool randomize;
+    
 
     void Start()
     {
+        if(randomize)
+        {
+            for(int j = 0; j < cardsList.Count; j++)
+            {
+                int Index = Random.Range(0, cardsList.Count);
+                tempCard = cardsList[j];
+                cardsList[j] = cardsList[Index];
+                cardsList[Index] = tempCard;
+            }
+        }
+
         int i=0;
         while(i!=firstDraw)
         {
-            GameObject card = Instantiate(cardsList[i], new Vector2(0, 0), Quaternion.identity);
-            card.transform.SetParent(Hand.transform, false);
-            cardsList.RemoveAt(firstDraw);
+            if(cardsList[0]!=null)
+            {
+                GameObject card = Instantiate(cardsList[0], new Vector2(0, 0), Quaternion.identity);
+                card.transform.SetParent(Hand.transform, false);
+            }
+            cardsList.RemoveAt(0);
             i++;
-            // card.name = $"{card.name}{i}";
          }
     }
-
-    public void KillCards()
-    {
-        for(int i=1; i<=3; i++)
-        {
-            Cemetery = GameObject.Find("Cemetery"+i);
-            Debug.Log(i);
-
-            for(int j=0; j<=2;j++)
-            {
-                if(j==0)
-                {
-                    DeleteZone = GameObject.Find("MeleeZone"+i);
-                }
-                else if(j==1)
-                {
-                    DeleteZone = GameObject.Find("RangedZone"+i);
-                }
-                else if(j==2)
-                {
-                    DeleteZone = GameObject.Find("SiegeZone"+i);
-                }
-
-                if(DeleteZone!=null)
-                {
-                    childrenCards = new GameObject[DeleteZone.transform.childCount];
-                    for(int k=0; k<childrenCards.Length; k++)
-                    {
-                        Debug.Log("Warning");
-                        childrenCards[k] = DeleteZone.transform.GetChild(0).gameObject;
-                        DeleteZone.transform.GetChild(0).transform.SetParent(Cemetery.transform);
-                    }
-                }
-            }
-        }
-        // childrenCards = DeleteZone.GetComponentsInChildren<Transform>();
-        // foreach(Transform childCard in childrenCards)
-        // {
-        //     childCard.SetParent(Cemetery.transform);
-        // }
-
-    }
-
-
-
-
-
 }

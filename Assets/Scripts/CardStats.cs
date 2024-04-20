@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class CardStats : MonoBehaviour
 {
+    //Almacena las estadisticas de la carta como el daño, el rango, si es dorada
+
     public GameObject NameText;
     public GameObject DescriptionText;
     public GameObject ArtImage;
@@ -16,10 +18,13 @@ public class CardStats : MonoBehaviour
     public bool player=false;
     public string nameString;
     public string descriptionString;
+    public int originalAttackDamage;
     public int attackDamage;
+    public int tempDamage;
     public int attackRange;
-    public bool  isGolden;
+    public bool isGolden;
     public bool isDummy;
+    public bool isGiant;
 
 
     private void OnEnable()

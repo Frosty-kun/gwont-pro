@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
+    //Amdministra el visor de daño del tablero, se encarga de eliminar las cartas al final de la ronda
+
     private int damageCounter = 0;
 
+    public GameObject DeleteZone;
+    public GameObject Cemetery;
     private CardStats cardStats;
     public CardStats[] FieldList1;
     public CardStats[] FieldList2;
@@ -14,8 +18,8 @@ public class BoardManager : MonoBehaviour
     public CardStats[] HandList1;
     public CardStats[] HandList2;
     private GameObject[] PlayerDamages;
-    // private GameObject Player1Damage;
-    // private GameObject Player2Damage;
+    public GameObject childCard;
+    public GameObject[] childrenCards;
     private GameObject areaReference;
 
     public int player1damage=0;
@@ -73,6 +77,41 @@ public class BoardManager : MonoBehaviour
         foreach(CardStats cardStats in HandList2)
         {
         
+        }
+    }
+    public void KillCards()
+    {
+        for(int i=1; i<=3; i++)
+        {
+            Cemetery = GameObject.Find("Cemetery"+i);
+            Debug.Log(i);
+
+            for(int j=0; j<=2;j++)
+            {
+                if(j==0)
+                {
+                    DeleteZone = GameObject.Find("MeleeZone"+i);
+                }
+                else if(j==1)
+                {
+                    DeleteZone = GameObject.Find("RangedZone"+i);
+                }
+                else if(j==2)
+                {
+                    DeleteZone = GameObject.Find("SiegeZone"+i);
+                }
+
+                if(DeleteZone!=null)
+                {
+                    childrenCards = new GameObject[DeleteZone.transform.childCount];
+                    for(int k=0; k<childrenCards.Length; k++)
+                    {
+                        Debug.Log("Warning");
+                        childrenCards[k] = DeleteZone.transform.GetChild(0).gameObject;
+                        DeleteZone.transform.GetChild(0).transform.SetParent(Cemetery.transform);
+                    }
+                }
+            }
         }
     }
 }

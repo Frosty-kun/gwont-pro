@@ -574,7 +574,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4806213986410628356}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
@@ -607,6 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 7902633714575406635, guid: 59179dec708b5424a9d2028e713d7894, type: 3}
+  inHand: 1
   itsTurn: 0
   hasPassed: 0
 --- !u!114 &4806213986410628358
@@ -751,6 +752,10 @@ MonoBehaviour:
   descriptionString: "Siendo los guardianes del mundo, los druidas se dedican a preservar
     el equilibrio natural y tienen el poder para hacerlo.ender a manipular el fuego
     y tambi\xE9n los que ense\xF1aron a las dem\xE1s criaturas a hacerlo."
+  originalAttackDamage: 4
   attackDamage: 4
+  tempDamage: 4
   attackRange: 2
   isGolden: 1
+  isDummy: 0
+  isGiant: 0

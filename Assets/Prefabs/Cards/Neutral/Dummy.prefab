@@ -573,7 +573,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4806213986410628356}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
@@ -606,6 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 7902633714575406635, guid: 59179dec708b5424a9d2028e713d7894, type: 3}
+  inHand: 1
   itsTurn: 0
   hasPassed: 0
 --- !u!114 &4806213986410628358
@@ -748,7 +749,9 @@ MonoBehaviour:
   player: 0
   nameString: Senuelo
   descriptionString: 
+  originalAttackDamage: 0
   attackDamage: 0
-  attackRange: 4
+  attackRange: 0
   isGolden: 0
   isDummy: 1
+  isGiant: 1

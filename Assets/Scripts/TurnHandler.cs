@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TurnHandler : MonoBehaviour
 {
+    //Se encarga de cambiar de turno y rondas, y verifica que jugador ganó la ronda y la partida
+
     public bool player1Turn=true;
     public bool player2Turn=false;
     public bool player1Passed=false;
@@ -85,7 +87,7 @@ public class TurnHandler : MonoBehaviour
         {
             player1Passed=true;
 
-            areaReference = GameObject.Find("Player1Area");
+            areaReference = GameObject.Find("PlayerArea1");
             dragDropList = areaReference.GetComponentsInChildren<DragDrop>();
 
             foreach(DragDrop dragDrop in dragDropList)
@@ -99,7 +101,7 @@ public class TurnHandler : MonoBehaviour
         {
             player2Passed=true;
 
-            areaReference = GameObject.Find("Player2Area");
+            areaReference = GameObject.Find("PlayerArea2");
             dragDropList = areaReference.GetComponentsInChildren<DragDrop>();
 
             foreach(DragDrop dragDrop in dragDropList)
@@ -115,6 +117,49 @@ public class TurnHandler : MonoBehaviour
         }
     }
 
+    private void NewRoundStart(int i)
+    {
+        if(i==1)
+        {
+            player1Turn = true;
+        }
+        else
+        {
+            player2Turn = true;
+        }
+
+        player1Passed = false;
+        player2Passed = false;
+        areaReference = GameObject.Find("CardsArea");
+        dragDropList = areaReference.GetComponentsInChildren<DragDrop>();
+        foreach(DragDrop dragDrop in dragDropList)
+        {
+            dragDrop.hasPassed = false;
+            dragDrop.itsTurn = false;
+        }
+
+        areaReference = GameObject.Find("PlayerArea"+i);
+        dragDropList = areaReference.GetComponentsInChildren<DragDrop>();
+        
+        foreach(DragDrop dragDrop in dragDropList)
+        {
+            dragDrop.itsTurn = true;
+        }
+
+        GameObject[] WeathersToDestroy = GameObject.FindGameObjectsWithTag("Weather");
+        foreach(GameObject gameObject in WeathersToDestroy)
+        {
+            if(gameObject.transform.childCount!=0)
+            {
+                Destroy(gameObject.transform.GetChild(0).gameObject);
+            }
+        }
+
+        
+
+        TurnText.GetComponent<Text>().text = "turno del jugador "+i;
+    }
+
     public void ResolveRound()
     {
         int resolveDamage1 = boardManager.player1damage;
@@ -126,20 +171,23 @@ public class TurnHandler : MonoBehaviour
         {
             player1Score++;
             Debug.Log("PLAYER 1 WON THE ROUND");
+            NewRoundStart(1);
         }
         else if(resolveDamage1<resolveDamage2)
         {
             player2Score++;
             Debug.Log("PLAYER 2 WON THE ROUND");
+            NewRoundStart(2);
         }
         else
         {
             player1Score++;
             player2Score++;
             Debug.Log("ROUND TIED");
+            NewRoundStart(1);
         }
 
-        deckList.KillCards();
+        boardManager.KillCards();
 
         boardManager.FieldDamage();
 

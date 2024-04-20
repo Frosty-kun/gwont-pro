@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    //Administra el visor de cartas
+
     private GameObject CardVisualizer;
     private GameObject VisualizedCard;
     private CardStats cardStats;
