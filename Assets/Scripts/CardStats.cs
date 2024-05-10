@@ -20,7 +20,6 @@ public class CardStats : MonoBehaviour
     public string descriptionString;
     public int originalAttackDamage;
     public int attackDamage;
-    public int tempDamage;
     public int attackRange;
     public bool isGolden;
     public bool isDummy;

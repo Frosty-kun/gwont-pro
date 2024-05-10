@@ -37,6 +37,20 @@ public class DeckList : MonoBehaviour
             }
             cardsList.RemoveAt(0);
             i++;
-         }
+        }
     }
+
+    public void DrawTwo()
+    {
+        for(int i=0; i<2; i++)
+        {
+            if(cardsList[0]!=null)
+            {
+                GameObject card = Instantiate(cardsList[0], new Vector2(0, 0), Quaternion.identity);
+                card.transform.SetParent(Hand.transform, false);
+            }
+            cardsList.RemoveAt(0);
+        }
+    }
+
 }

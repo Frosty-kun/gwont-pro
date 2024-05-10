@@ -86,7 +86,7 @@ public class BoardManager : MonoBehaviour
             Cemetery = GameObject.Find("Cemetery"+i);
             Debug.Log(i);
 
-            for(int j=0; j<=2;j++)
+            for(int j=0; j<=5;j++)
             {
                 if(j==0)
                 {
@@ -100,6 +100,18 @@ public class BoardManager : MonoBehaviour
                 {
                     DeleteZone = GameObject.Find("SiegeZone"+i);
                 }
+                else if(j==3)
+                {
+                    DeleteZone = GameObject.Find("MeleeBuff"+i);
+                }
+                else if(j==4)
+                {
+                    DeleteZone = GameObject.Find("RangedBuff"+i);
+                }
+                else if(j==5)
+                {
+                    DeleteZone = GameObject.Find("SiegeBuff"+i);
+                }
 
                 if(DeleteZone!=null)
                 {
@@ -108,7 +120,7 @@ public class BoardManager : MonoBehaviour
                     {
                         Debug.Log("Warning");
                         childrenCards[k] = DeleteZone.transform.GetChild(0).gameObject;
-                        DeleteZone.transform.GetChild(0).transform.SetParent(Cemetery.transform);
+                        DeleteZone.transform.GetChild(0).transform.SetParent(Cemetery.transform, true);
                     }
                 }
             }

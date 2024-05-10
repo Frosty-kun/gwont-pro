@@ -12,6 +12,7 @@ TagManager:
   - WeatherCard
   - ClearCard
   - EffectCard
+  - SetZone2
   layers:
   - Default
   - TransparentFX

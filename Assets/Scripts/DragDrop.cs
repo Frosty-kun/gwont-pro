@@ -200,6 +200,12 @@ public class DragDrop : MonoBehaviour
                 detectedCollision=true;
                 Debug.Log("SetZoneFound");
             }
+            if(collision.gameObject!=null&&collision.gameObject.CompareTag("SetZone2"))
+            {
+                Placement = collision.gameObject;
+                detectedCollision=true;
+                Debug.Log("SetZoneFound");
+            }
         }
         else
         {
@@ -285,6 +291,8 @@ public class DragDrop : MonoBehaviour
     void Update()
     {
         weatherManager.CastWeather();
+
+        
         HandLimitCheck();
         if(isDragging&&inHand&&itsTurn&&!hasPassed)
         {
@@ -296,8 +304,6 @@ public class DragDrop : MonoBehaviour
             Card.transform.SetParent(Hand.transform, true);
             weatherManager.CastWeather();
         }
-        
-        
 
         if(!isDragging&&inHand&&cardToClear!=null)
         {

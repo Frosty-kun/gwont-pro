@@ -18,7 +18,8 @@ public class TurnHandler : MonoBehaviour
     private int player2Score=0;
     private string playerTurnName="1";
 
-    private DeckList deckList;
+    private DeckList deckList1;
+    private DeckList deckList2;
     private BoardManager boardManager;
     private DragDrop dragDrop;
     private GameObject TurnText;
@@ -30,7 +31,8 @@ public class TurnHandler : MonoBehaviour
 
     void OnEnable()
     {
-        deckList = GameObject.Find("Deck1").GetComponent<DeckList>();
+        deckList1 = GameObject.Find("Deck1").GetComponent<DeckList>();
+        deckList2 = GameObject.Find("Deck2").GetComponent<DeckList>();
         boardManager = GameObject.Find("Main Canvas").GetComponent<BoardManager>();
         dragDrop = GetComponent<DragDrop>();
         TurnText = GameObject.Find("TurnText");
@@ -155,7 +157,8 @@ public class TurnHandler : MonoBehaviour
             }
         }
 
-        
+        deckList1.DrawTwo();
+        deckList2.DrawTwo();
 
         TurnText.GetComponent<Text>().text = "turno del jugador "+i;
     }
